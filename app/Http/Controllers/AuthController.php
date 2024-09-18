@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,5 +21,10 @@ class AuthController extends Controller
         }
 
         return response()->json(['error' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
+    }
+
+    public function me(Request $request)
+    {
+        return $request->user();
     }
 }

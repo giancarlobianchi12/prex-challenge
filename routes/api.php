@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\GifController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+$router->group(['middleware' => ['auth:api']], function () use ($router) {
+    $router->get('/user', [AuthController::class, 'me'])->name('auth.me');
+    $router->get('/gifs/search', [GifController::class, 'search'])->name('gifs.search');
+    $router->get('/gifs/{id}', [GifController::class, 'show'])->name('gifs.show');
 });
