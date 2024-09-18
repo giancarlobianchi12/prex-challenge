@@ -69,7 +69,6 @@ class GiphyService
     /**
      * Process Exception
      *
-     * @param RequestException $e
      * @return void
      */
     private function handleRequestException(RequestException $e)

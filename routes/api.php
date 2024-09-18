@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\GifController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,5 @@ $router->group(['middleware' => ['auth:api']], function () use ($router) {
     $router->get('/user', [AuthController::class, 'me'])->name('auth.me');
     $router->get('/gifs/search', [GifController::class, 'search'])->name('gifs.search');
     $router->get('/gifs/{id}', [GifController::class, 'show'])->name('gifs.show');
+    $router->post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
 });
