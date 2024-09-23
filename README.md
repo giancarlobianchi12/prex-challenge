@@ -37,7 +37,7 @@ Follow these steps to set up the project:
   php artisan key:generate
   php artisan migrate --seed
   php artisan passport:client --personal
-  Nombre: "Laravel Personal Access Client"
+  Name: "Laravel Personal Access Client"
   php artisan test
   ```
 3. **Additional Notes:**
