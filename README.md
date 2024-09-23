@@ -44,6 +44,7 @@ Follow these steps to set up the project:
 
 - The GIF ID is handled as a string due to the API response.
 - PDF with Use Case Diagram, Sequence Diagram, and Entity-Relationship Diagram: https://drive.google.com/file/d/1bHKXkgMEfujFmanakOd__hJmKIH6P-IT/view
+- Postman Collection: https://www.postman.com/grey-flare-132319/prex-challenge/overview
 - To run the tests:
 ```
 php artisan test
