@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->string('service');
-            $table->text('request_body');
+            $table->longText('request_body');
             $table->integer('http_status_code');
-            $table->text('response_body');
+            $table->longText('response_body');
             $table->ipAddress('ip_address');
             $table->timestamps();
         });
