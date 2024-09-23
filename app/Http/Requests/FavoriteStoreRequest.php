@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class FavoriteStoreRequest extends FormRequest
 {
@@ -22,9 +23,15 @@ class FavoriteStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'gif_id' => 'required|string|max:255|unique:favorites,gif_id',
+            'gif_id' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('favorites')->where(function ($query) {
+                    return $query->where('user_id', $this->user()->id);
+                }),
+            ],
             'alias' => 'required|string|max:255|min:3',
-            'user_id' => 'required|numeric|exists:users,id',
         ];
     }
 }

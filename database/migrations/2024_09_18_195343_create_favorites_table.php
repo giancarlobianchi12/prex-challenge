@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->string('gif_id')->unique();
+            $table->string('gif_id');
             $table->string('alias');
 
             $table->foreignId('user_id')->constrained();

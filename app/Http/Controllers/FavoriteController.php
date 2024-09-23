@@ -6,6 +6,7 @@ use App\Http\Requests\FavoriteStoreRequest;
 use App\Repositories\Favorite\FavoriteRepositoryInterface;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
@@ -19,7 +20,10 @@ class FavoriteController extends Controller
 
     public function store(FavoriteStoreRequest $request)
     {
-        $favorite = $this->favoriteRepository->create($request->validated());
+        $favorite = $this->favoriteRepository->create([
+            ...$request->validated(),
+            'user_id' => Auth::user()->id,
+        ]);
 
         return response()->json(new JsonResource($favorite), Response::HTTP_CREATED);
     }
