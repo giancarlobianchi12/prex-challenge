@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
 $router->group(['middleware' => ['auth:api']], function () use ($router) {
     $router->get('/user', [AuthController::class, 'me'])->name('auth.me');
