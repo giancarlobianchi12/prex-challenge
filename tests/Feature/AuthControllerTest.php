@@ -4,9 +4,9 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\DB;
+use Laravel\Passport\Passport;
+use Tests\TestCase;
 
 class AuthControllerTest extends TestCase
 {
@@ -43,9 +43,16 @@ class AuthControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->getJson(route('auth.me'));
+        $response = $this->actingAs($user, 'api')->getJson(route('auth.me'));
 
         $response->assertSuccessful();
+    }
+
+    public function test_user_unauthorized_can_not_get_me()
+    {
+        $response = $this->getJson(route('auth.me'));
+
+        $response->assertUnauthorized();
     }
 
     private function createPersonalClient()

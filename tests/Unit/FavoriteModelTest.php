@@ -9,6 +9,7 @@ use Tests\TestCase;
 class FavoriteModelTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * A basic unit test example.
      */

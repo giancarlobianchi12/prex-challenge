@@ -25,7 +25,7 @@ class GiphyService
     public function searchGifs(string $query, int $limit = 20, int $offset = 0)
     {
         try {
-            $response = $this->client->request('GET', 'v1/gifs/search', [
+            $response = $this->client->request('GET', '/v1/gifs/search', [
                 'query' => [
                     'api_key' => $this->apiKey,
                     'q' => $query,
