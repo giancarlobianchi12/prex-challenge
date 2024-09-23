@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\ApiRequestLog;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
@@ -23,6 +24,8 @@ class AuthControllerTest extends TestCase
         ]);
 
         $response->assertSuccessful();
+
+        $this->assertDatabaseCount(ApiRequestLog::class, 1);
     }
 
     public function test_user_can_not_auth_password_wrong(): void
@@ -37,6 +40,8 @@ class AuthControllerTest extends TestCase
         ]);
 
         $response->assertUnauthorized();
+
+        $this->assertDatabaseCount(ApiRequestLog::class, 1);
     }
 
     public function test_user_can_get_me()
